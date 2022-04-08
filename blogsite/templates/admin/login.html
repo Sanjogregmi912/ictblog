@@ -1,0 +1,41 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title> Login Admins </title>
+<link rel="stylesheet" href="{% static 'css/admin/loginstyle.css' %}">
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/4124663c40.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <body>
+    <div class="row"> <a href="/"> <img src="{% static 'images/ict.png' %}" class="logo"> </a>
+    </div>
+    <div class="login-page">
+
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>LOGIN</h3>
+            <p>Please enter your credentials to login.</p>
+          </div>
+          {% for message in messages  %}
+          <p class="message" style="color:red;"><strong> <i class="fa-solid fa-circle-xmark"></i> <span>  </span>{{message}} </strong></p>
+          {% endfor %}
+        
+        <form class="login-form" action="login" method="post">
+            {% csrf_token %}
+
+          <input type="text" name="username" placeholder="username"/>
+          <input type="password" name="password" placeholder="password"/>
+          <input type="submit" class ="button" value="Login">
+        </form>
+    </div>
+      
+    </div>
+</body>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{%extends 'writers/dashboard.html'%}
+{% block content %}
+<h1> Add New Blog </h1>
+<form action='addblog' method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- <div class="input-group md-form form-sm ">
+        <div class="input-group-append mt-2">
+            <label class="col-lg-4 required">Upload Image:</label>
+            <input type="file" name="template"  id="image"  class="form-control col-lg-8" style="margin-left:31px">
+        </div>
+    </div> -->
+    
+
+    <div class="input-group md-form form-sm title-input show" id="text2" >
+        <div class="input-group-append mt-5" >
+            <label class="col-lg-4 required"> Blog Title</label>
+            <input style="width:600px;" type="text" name="title"  class="form-control col-lg-10" placeholder="Enter Blog title Here">
+          
+        </div>
+        <span style="margin-left:180px;"> <p style="color:chocolate;">** Please select the suitable Tittle which reflect the whole blog content and attract the readers as well </p><span>
+    </div>
+
+    <div class="input-group md-form form-sm category-input show " id="text3" >
+        <div class="input-group-append mt-2">
+            <label class="col-lg-6 required">Slug</label>
+            <input type="text" name="slug"    class="form-control col-lg-10" placeholder="Enter Category or type of blog written">
+        </div>
+            <span style="margin-left:180px;"> <p style="color:chocolate;">** Please select the suitable category for organizing the blogs in order </p><span>
+        
+    </div>
+    <div class="input-group md-form form-sm category-input show " id="text3" >
+        <div class="input-group-append mt-2">
+            <label class="col-lg-6 required">Author</label>
+            <input type="text" name="author"    class="form-control col-lg-10" value="{{request.user.username}}">
+        </div>
+    </div>
+    <div class="input-group md-form form-sm ">
+        <div class="input-group-append mt-2">
+            <label class="col-lg-6 required">Status:</label>
+            <select class="form-control col-lg-10 ml-2 mb-2" id="type" name="status">
+                <option value="0">Draft</option>
+                <option value="1">Publish</option>
+                
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group md-form form-sm title-input hide" id="text5" >
+        <div class="input-group-append mt-5" >
+            <label class="col-lg-4 required"> Blog Content:</label>
+            <textarea style="width:600px; height:500px;" type="" name="content"  class="form-control col-lg-10" placeholder="Enter Blog Content Here"></textarea>
+          
+        </div>
+        <span style="margin-left:180px;"> <p style="color:chocolate;">** Please select the suitable Tittle which reflect the whole blog content and attract the readers as well </p><span>
+    </div>
+    <div class="btn-group m-3 buttons">
+        <input value="Confirm Add" type="submit" class="btn btn-success ml-5" style="margin-right: 16px;"/>
+        <a href="/view"><button type="button"  class="btn btn-danger ml-3">
+            Cancel</button></a>
+    </div>
+    
+</form>
+
+<!-- <style>
+    .hide{
+        display:none;
+    }
+    .show{
+        display:flex;
+    }
+    </style> -->
+<!-- <script>
+function clickMe() {
+  var image = document.getElementById("text1");
+  var title = document.getElementById("text2");
+  var category = document.getElementById("text3");
+  var button = document.getElementById("text4");
+  var paragraph1 = document.getElementById("text5");
+  image.classList.toggle("hide");
+  image.classList.toggle("show");
+  title.classList.toggle("hide");
+  title.classList.toggle("show");
+  category.classList.toggle("hide");
+  category.classList.toggle("show");
+  button.classList.toggle("hide");
+  button.classList.toggle("show");
+  paragraph1.classList.toggle("hide");
+  paragraph1.classList.toggle("show");
+}
+    </script> -->
+
+{% endblock %}

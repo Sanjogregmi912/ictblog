@@ -1,0 +1,60 @@
+{% extends 'admin/dashboard.html' %}
+{%  block content %}
+
+<h1>Staff Details </h1>
+<a href="/writer/addstaff">
+    <button class="btn btn-success mb-2 ml-3"><i class="fa fa-plus mr-1"></i>Add Staff </button>
+</a>
+<div class="table-responsive-md  table-responsive-sm ml-3 ">
+    <table class="table table-bordered table-hover table-bordered table-striped">
+        <thead class="thead bg-light">
+           <tr>
+               <th scope="col">ID</th>
+               <th scope="col">Last Login</th>
+               <th scope="col">Is Superuser</th>
+               <th scope="col">Username</th>
+               <th scope="col">First Name </th>
+               <th scope="col">Last Name</th>
+               <th scope="col"> Email </th> 
+               <th scope="col">Is Staff</th>
+               <th scope="col">Is Active</th>
+               <th scope="col">Date Joined</th>
+
+           </tr>
+        </thead>
+        {% for writer in writer %}
+        <tr class="tbody">
+            <td>{{writer.id}}</td>
+            <td>{{writer.last_login}}</td>
+            <td>{{writer.is_superuser}}</td>
+            <td>{{writer.username}}</td>
+            <td>{{writer.first_name}}</td>
+            <td>{{writer.last_name}}</td>
+            <td>{{writer.email}}</td>
+            <td>{{writer.is_staff}}</td>
+            <td>{{writer.is_active}}</td>
+            <td>{{writer.date_joined}}</td>
+
+            <th>
+                <a href="customer_edit/{{customer.id}}" style="color:green;text-decoration:none"><i class="fa fa-pencil-square fa-lg" ></i> Edit HERE </a>
+                 |
+                <a href="customer_delete/{{customer.id}}" style="color:red; text-decoration: none;"><i class="fa fa-trash-o ml-2 fa-lg"></i> Delete HERE </a>
+                
+            </th>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+<div class="pagination d-flex justify-content-center">
+    <form method="POST" action="">
+          {% csrf_token %}
+          {% if page > 1 %}
+          <button class="btn btn-light p-1" name="prev" >Previous</button>
+          {% endif %}
+          <input readonly class="text-center p-1" value="{{page}}" name="page"/>
+          {% if pageItem == 4 %}
+          <button name="next" class="btn btn-light p-1">Next</button>
+          {% endif %}
+    </form>
+</div>
+{% endblock%}

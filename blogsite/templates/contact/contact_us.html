@@ -1,0 +1,18 @@
+{% extends 'homepage.html' %}
+{% block content%}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/contact/contactform.css' %}"
+<div class="wrapper">
+    <form class="form" method="post">
+      <div class="secondaryTitle title">Please fill this form for sending feedbacks </div>
+      <input type="text" class="name formEntry" placeholder="Name" />
+      <input type="text" class="email formEntry" placeholder="Email"/>
+      <textarea class="message formEntry" placeholder="Message"></textarea>
+      <input type="checkbox" class="termsConditions" value="Term">
+      <label style="color: grey" for="terms"> I Accept the <span style="color: #0e3721">Terms of Use</span> & <span style="color: #0e3721">Privacy Policy</span>.</label><br>
+      <input type="submit" class="submit formEntry" onclick="thanks()">
+    </form>
+  </div>
+  
+{% endblock %}
